@@ -1,13 +1,10 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
 app.get('/bfhl', (req, res) => {
-    res.status(200).json({
-        operation_code: 1
-    });
+    res.status(200).json({ operation_code: 1 });
 });
 
 app.post('/bfhl', (req, res) => {
@@ -16,7 +13,7 @@ app.post('/bfhl', (req, res) => {
     if (!data || !Array.isArray(data)) {
         return res.status(400).json({
             is_success: false,
-            message: 'Invalid input data'
+            message: 'Invalid input data',
         });
     }
 
@@ -39,15 +36,13 @@ app.post('/bfhl', (req, res) => {
 
     res.json({
         is_success: true,
-        user_id: 'Vidit_Kothari_05032002',  
-        email: 'vidit.kothari.vk@gmail.com',  
-        roll_number: '21BCE3610',  
+        user_id: 'john_doe_17091999',
+        email: 'john@xyz.com',
+        roll_number: 'ABCD123',
         numbers,
         alphabets,
-        highest_lowercase_alphabet: highestLowerCase ? [highestLowerCase] : []
+        highest_lowercase_alphabet: highestLowerCase ? [highestLowerCase] : [],
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+module.exports = app;
